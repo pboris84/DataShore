@@ -5,4 +5,7 @@ Spyder Editor
 This is a temporary script file.
 """
 
-print("Hello World")
+# data preprocessing
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
