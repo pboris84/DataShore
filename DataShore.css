@@ -1,3 +1,12 @@
+body {
+    background-color: silver;
+    text-family: sans-serif;
+}
 h1 {
-    color: blue;
+    color: #293C92;
+    text-family: "Lucinda Sans", sans-serif;
+    font-size: 24pt;
+}
+p {
+    font-size = 12pt;
 }
