@@ -1,3 +1,15 @@
 h1 {
     color: blue;
+
+}
+
+.home{
+    margin: auto;
+    width: 50%;
+    border-radius: 10px;
+    margin-top: 100px
+} 
+
+.dropdown{
+    margin: 0px 10px 10px 10px;
 }
