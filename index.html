@@ -11,6 +11,8 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	</head>
 	
 	<body>
@@ -39,27 +41,37 @@
             </div>
             <main class="mdl-layout__content">
                 <div id="page-content"><!-- Your content goes here -->
-                    <div class="home panel panel-info">
+                    <div class="home panel panel-info" id="variable-select">
                         <div class="panel-heading">
                             <h2 class="panel-title">Welcome to DataShore</h2>
                         </div>
                         <div class="panel-body">Choose a varibale to predict!</div>
-                        <div class="dropdown">
-                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                ---
-                            <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                <li><a href="#">Salinity</a></li>
-                                <li><a href="#">Temperature</a></li>
-                                <li><a href="#">density</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Other</a></li>
-                            </ul>
+                        <div>
+                            <select id="varSelect" class="dropdown">
+                                 <option value="">---</option>
+                                <option value="salinity">Salinity</option>
+                                <option value="temperature">Temperature</option>
+                                <option value="density">Density</option>
+                                <option value="other">Other</option>
+                            </select>
                         </div>
                     </div>
+                    <div class="home panel" id="variable-require">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Prepare to Upload your Data</h2>
+                        </div>
+                        <div class="panel-body">The required varables needed to predict</div>
+                        <div>
+                            <p id="variable-require-result"></p>
+                        </div>
+                    </div>
+                    <div id="file-upload"></div>
+                    <div id="part2"></div>
+                    <div id="part3"></div>
                 </div>
             </main>
         </div>
 	</body>
+
+    <script src="src/index.js"></script>
 </html>
