@@ -20,7 +20,7 @@ if(varSelect){
             //fileUploaeded = document.getElementById('txtFileUpload');
         }
         if(varSelect.value == "density") {
-            varRequire.innerHTML = "<button type='button' class='mdl-chip' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip'><span class='mdl-chip__text'>salinity</span></button> <input type='file' name='File Upload' id='txtFileUpload' onchange='startUpload(event)' accept='.csv'/> <button type='button' id='nextStep' class='mdl-chip'><span class='mdl-chip__text'>Next</span></button>"
+            varRequire.innerHTML = "<button type='button' class='mdl-chip' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip'><span class='mdl-chip__text'>salinity</span></button> <input type='file' name='File Upload' id='txtFileUpload' onchange='startUpload(event)' accept='.csv'/> <button type='button' id='nextStep' class='mdl-chip'><span class='mdl-chip__text'><a href='src/visualize.html'>Next</span></button>"
             //fileUploaeded = document.getElementById('txtFileUpload');
         }
     });
@@ -29,49 +29,43 @@ if(varSelect){
 }
 
 function startUpload(evt){
-// if(fileUploaeded){
-//             fileUploaded.addEventListener('change', upload, false);
-//         }else{
-//             alert("null");
-//         }
-        // Method that checks that the browser supports the HTML5 File API
-        alert("called");
-        evt.preventDefault();
-        upload(evt);
-        function browserSupportFileUpload() {
-            var isCompatible = false;
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                isCompatible = true;
-                alert("isCompatible");
-            }
-            return isCompatible;
+    // Method that checks that the browser supports the HTML5 File API
+    evt.preventDefault();
+    upload(evt);
+    function browserSupportFileUpload() {
+        var isCompatible = false;
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            isCompatible = true;
+            //alert("isCompatible");
         }
+        return isCompatible;
+    }
 
-        // Method that reads and processes the selected file
-        function upload(evt) {
-            if (!browserSupportFileUpload()) {
-                alert('The File APIs are not fully supported in this browser!');
-            } else {
-                    alert("start to read");
-                    var data = null;
-                    var file = evt.target.files[0];
-                    var reader = new FileReader();
-                    alert(file);
-                    reader.readAsText(file);
-                    reader.onload = function(event) {
-                        var csvData = event.target.result;
-                        data = $.csv.toArrays(csvData);
-                        if (data && data.length > 0) {
-                            alert('Imported -' + data.length + '- rows successfully!');
-                        
-                        }else{
-                            reader.onerror = function() {
-                                alert('Unable to read ' + file.fileName);
-                            };
-                        }
+    // Method that reads and processes the selected file
+    function upload(evt) {
+        if (!browserSupportFileUpload()) {
+            //alert('The File APIs are not fully supported in this browser!');
+        } else {
+                //alert("start to read");
+                var data = null;
+                var file = evt.target.files[0];
+                var reader = new FileReader();
+                //alert(file);
+                reader.readAsText(file);
+                reader.onload = function(event) {
+                    var csvData = event.target.result;
+                    data = $.csv.toArrays(csvData);
+                    if (data && data.length > 0) {
+                        alert('Imported -' + data.length + '- rows successfully!');
+                    
+                    }else{
+                        reader.onerror = function() {
+                            alert('Unable to read ' + file.fileName);
+                        };
                     }
-            }   
-        }
+                }
+        }   
+    }
 }
 
 
