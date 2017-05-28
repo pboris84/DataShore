@@ -1,9 +1,9 @@
 
 /* SIGNIN/ SIGNUP FORM */
 /*=====================*/
-/**, *:before, *:after {
+*, *:before, *:after {
   box-sizing: border-box;
-}*/
+}
 
 html {
   overflow-y: scroll;
@@ -61,11 +61,11 @@ a:hover {
 }
 .tab-group li a:hover {
   background: #2767AE;
-  color: #ffffff;
+  color: white;
 }
 .tab-group .active a {
   background: #2399D3;
-  color: #ffffff;
+  color: white;
 }
 
 .tab-content > div:last-child {
@@ -74,7 +74,7 @@ a:hover {
 
 h1 {
   text-align: center;
-  color: white;
+  color: #2767AE;
   font-weight: 300;
   margin: 0 0 40px;
 }
@@ -84,12 +84,12 @@ label {
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
-  color: rgba(255, 255, 255, 0.5);
-  -webkit-transition: all 0.25s ease;
+  color: #2767AE;
+  /*-webkit-transition: all 0.25s ease;*/
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
-  font-size: 22px;
+  font-size: 13px;
 }
 
 label .req {
@@ -98,9 +98,9 @@ label .req {
 }
 
 label.active {
-  -webkit-transform: translateY(50px);
-          transform: translateY(50px);
-  left: 2px;
+  -webkit-transform: translateY(27px);
+          transform: translateY(27px);
+  left: 1px;
   font-size: 14px;
 }
 
@@ -109,7 +109,7 @@ label.active .req {
 }
 
 label.highlight {
-  color: #ffffff;
+  color: #2399D3;
 }
 
 input, textarea {
