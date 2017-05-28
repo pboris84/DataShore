@@ -167,7 +167,6 @@ function creat_profolie(myObject,headers){
     //intergrated line chart--default//
     var dataset1 =[temp,density,salinity];
     var layout1 = {
-        title:'Basic Profile',
         xaxis: {
             side: 'top',
             title: headers.toString()},
@@ -181,7 +180,6 @@ function creat_profolie(myObject,headers){
 
     //seperated line chart
     var temp_layout = {
-        title:'Basic Profile',
         xaxis: {
             side: 'top',
             title: "temperature"},
@@ -191,7 +189,6 @@ function creat_profolie(myObject,headers){
         height: 500
     };
     var density_layout = {
-        title:'Basic Profile',
         xaxis: {
             side: 'top',
             title: "density"},
@@ -201,7 +198,6 @@ function creat_profolie(myObject,headers){
         height: 500
     };
     var salinity_layout = {
-        title:'Basic Profile',
         xaxis: {
             side: 'top',
             title: "salinity"},
