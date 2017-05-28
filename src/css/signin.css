@@ -85,7 +85,7 @@ label {
           transform: translateY(6px);
   left: 13px;
   color: #2767AE;
-  /*-webkit-transition: all 0.25s ease;*/
+  -webkit-transition: all 0.25s ease;
   transition: all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
