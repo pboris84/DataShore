@@ -11,7 +11,7 @@ html {
 
 body {
   font-family: 'Titillium Web', sans-serif;
-  background-image: url('src/img/smoke-waves-wallpaper-1.jpg');
+  background-image: url('/src/img/smoke-waves-wallpaper-1.jpg');
 
 }
 
@@ -254,6 +254,14 @@ textarea {
   color: white;
   box-shadow: 0 0 10px 10px white;
 }
+
+#role{
+  background: linear-gradient(to right, navy, lightblue);
+  color: white;
+  box-shadow: 0 0 10px 10px white;
+}
+
+
 
 
 /*heaer & footer */

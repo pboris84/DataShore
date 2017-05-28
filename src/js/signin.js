@@ -111,16 +111,21 @@ function signin(){
 
 //* ############ START OF PRODUCT INTRO ############ *//
 $("#role").click(function(){
-    console.log($("#role").prop("id"));
     $("#support_img_src").prop("src","src/img/Landing Page Image 1.png");
 })
 $("#problem").click(function(){
-    console.log($("#problem").prop("id"));
     $("#support_img_src").prop("src","src/img/Landing Page Image 2.png");
 })
 $("#solution").click(function(){
-    console.log($("#solution").prop("id"));
     $("#support_img_src").prop("src","src/img/Landing Page Image 3.png");
+})
+
+$(".sub_info").click(function(){
+    $(".sub_info").css("background","white");
+    $(".sub_info").css("color","black");
+    $(this).css("background","linear-gradient(to right, navy, lightblue)");
+    $(this).css("color","white");
+    $(this).css("box-shadow", "0 0 20px 10px white");
 })
 
 

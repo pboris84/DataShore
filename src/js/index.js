@@ -103,6 +103,7 @@ function creat_project(){
 //=== stg 0 === 
 //create project
 function creatPro(){
+    $("#help").css("display","none");
     project_name = document.getElementById('project_name').value;
     document.getElementById('stage_content').innerHTML = select_var;
     document.getElementById("creat_pro_stg").classList.remove('active');
