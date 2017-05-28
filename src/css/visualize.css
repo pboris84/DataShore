@@ -1,0 +1,130 @@
+/* page format */
+body{
+    position: relative;
+    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode:darken;
+    background: -moz-linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    opacity:0.5,
+}
+
+
+#page-content{
+    display: flex;
+}
+
+#page_content_nav{
+    text-align: center;
+}
+
+#add_chart_btn{
+    position: relative;
+    width: 80%;
+    background-color:lightblue;
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/*nav bar */
+/* nav bar */
+#nav_header{
+    opacity:0.85;
+    background-color: #283299;
+}
+
+
+#nav_user_pro img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+#nav_user_pro, .mdl-layout__drawer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#drawer{
+    background-image: url("src/img/Capstone-Orca-2.png");
+    background-repeat: no-repeat;
+    background-size: 200%;
+    background-position: bottom right;  
+}
+
+
+/* profile page */
+#line_switch{
+    display: flex;
+    justify-content: center;
+}
+#line_switch label{
+    display: flex;
+    width: 5%;
+    margin-left: 3vh;
+    margin-right: 2vh;
+}
+
+/* chart page */
+#page-content{
+    position: relative;
+}
+
+#chart_sel_modal{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+}
+
+.heatmap{
+    display: inline-block;
+}
+
+.scatter{
+    display: inline-block;
+}
+
+.input-group-addon{
+    width: 100px;
+    height: 100px;
+}
+
+
+.js-plotly-plot{
+    display: inline-block;
+    opacity: 0.8;
+    justify-content: space-around;
+}
+
+#chart_list, #add_chart_btn{
+    /*width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;*/
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around;
+    align-items: flex-start;
+    /*justify-content: space-around;*/
+}
+
+#add_chart_btn{
+    width: 40%;
+    height: 50px;
+    background-color:#323B48;
+    color: white;
+    box-shadow: 3px 3px 5px #888888
+}
+
+ #output_dt{
+     opacity: 0.8;
+     width: 80%;
+     margin: auto;
+ }
+
