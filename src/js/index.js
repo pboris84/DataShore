@@ -41,15 +41,11 @@ var output_dt="<div class='home panel' id='output_dt'><div class='panel-heading'
 //##############End of Different Process Stage###########//
 //#### init ####//
 function init(){
-    console.log(USER.displayName);
     var dataRef = database.ref('project/'+ USER.displayName);
     dataRef.once("value",function(snapshot){
-        console.log(snapshot.exists());
         if(snapshot.exists()){
-            console.log("get_list");
             get_list();
         }else{
-            console.log("create_project");
             creat_project();
         }
     })
@@ -75,7 +71,6 @@ function get_list(){
     dataRef.once('value', function(snapshot) {
         snapshot.forEach(function(child) {
                 var project = child.toJSON();
-                console.log(project);
                 var projectName = project.Project_Tittle;
                 var creatDate = project.CreateDate;
                 var project_div = document.createElement("div");
@@ -84,12 +79,10 @@ function get_list(){
                 project_list_div.appendChild(project_div);
                 $('.project_link').click(function(){
                     sessionStorage.setItem('project_name', projectName);
-                    console.log(sessionStorage.project_name);
                 });
         });
     });
     $("#add_project_btn").click(function(){
-        console.log("create!")
         creat_project();
     })
 }
@@ -123,7 +116,6 @@ function creatPro(){
 //=== stg 1 === 
 //select var
 function selectVar(evt){
-    console.log("selectVar")
      evt.preventDefault();
      var varSelect = document.getElementById("varSelect");
     if(varSelect){
@@ -179,7 +171,6 @@ function downloadTemplate(template_var){
     var csvContent = "data:text/csv;charset=utf-8,";
     var output = [['data'],template_var];
     output.forEach(function(infoArray, index){
-        console.log(infoArray);
         var dataString = infoArray.join(",");
         csvContent += index < output.length ? dataString+ "\n" : dataString;
     }); 
@@ -268,8 +259,6 @@ function writeData(project_name){
 //=== stg 3 ===
 //view output
 function viewOutput(data){
-    console.log("view output function called");
-    alert('Imported -' + data.length + '- rows successfully!');
     document.getElementById("upload_dt_stg").classList.remove('active');
     document.getElementById("upload_dt_stg").classList.add('complete');
     document.getElementById("view_dt_stg").classList.remove('disabled');
@@ -289,7 +278,6 @@ function retrive_output(project_name){
     dataRef.once('value', function(snapshot) {
         snapshot.forEach(function(child) {
             if(child.key == 'Uploaded_File'){
-                console.log(child.val());
                 output_res = child.val();
             }
         });
@@ -310,7 +298,6 @@ function creatTB(res_len){
         var dataRow = output_res[index];
         if(dataRow[0]=="data"){
             nonbody_count = index + 1;
-            console.log(nonbody_count);
             startParse = true;
             index = index + 1;
             dataRow = output_res[index];
@@ -360,7 +347,6 @@ function download(){
     var csvContent = "data:text/csv;charset=utf-8,";
     var output = data.slice(1);
     output.forEach(function(infoArray, index){
-        console.log(infoArray);
         var dataString = infoArray.join(",");
         csvContent += index < output.length ? dataString+ "\n" : dataString;
     }); 
@@ -386,7 +372,6 @@ function showTut(){
     $("#modal_tut").modal();
         $("#tut_leave").click(function(){
             var tut_2_height = $(".process_bar").css('height');
-            console.log(tut_2_height);
             $(".bs-wizard-info").css("visibility","hidden");
             var tut_btn_div = document.createElement('div');
             tut_btn_div.setAttribute('id','tut_btn_div');
@@ -421,7 +406,6 @@ function rollbaclModal(clicked_id){
     }else{
         $("#myModal").modal();
         $("#modal_leave").click(function(){
-            alert(clicked_id +" and " + stg_count);
             rollback(clicked_id);
         })
     }
@@ -431,14 +415,11 @@ function rollbaclModal(clicked_id){
 function rollback(clicked_id){
     var prev_stg_count = stg_count;
     stg_count = stg_array.indexOf(clicked_id);
-    console.log("stg_count", stg_count);
     document.getElementById(stg_array[prev_stg_count]).classList.remove('active');
-    console.log("prev_stg_count",prev_stg_count);
     while(prev_stg_count > stg_count){
         document.getElementById(stg_array[prev_stg_count]).classList.remove('complete');
         document.getElementById(stg_array[prev_stg_count]).classList.add('disabled');
         prev_stg_count --;
-        console.log("prev_stg_count",prev_stg_count);
     }
     document.getElementById(stg_array[stg_count]).classList.remove('complete');
     document.getElementById(stg_array[stg_count]).classList.add('active');
