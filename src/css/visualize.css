@@ -18,15 +18,6 @@ body{
     text-align: center;
 }
 
-#add_chart_btn{
-    position: relative;
-    width: 80%;
-    background-color:lightblue;
-    border-radius: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
 /*nav bar */
 /* nav bar */
 #nav_header{
@@ -115,11 +106,16 @@ body{
 }
 
 #add_chart_btn{
+    position: relative;
     width: 40%;
     height: 50px;
-    background-color:#323B48;
+    background-color:#273D93;
     color: white;
-    box-shadow: 3px 3px 5px #888888
+    border-radius: 10px;
+    border: 5px solid white;
+    margin-left: 5%;
+    margin-right: 5%;
+    box-shadow: 3px 3px 5px #888888;
 }
 
  #output_dt{

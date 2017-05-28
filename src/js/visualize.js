@@ -513,7 +513,7 @@ function create_scatter_line(x,y,chart_type){
         child_div.setAttribute("id",id);
     }
     var checkbox =document.createElement("div");
-    checkbox.innerHTML = "<input type='checkbox' class='pin'>Pined to Profoile";
+    checkbox.innerHTML = "<input type='checkbox' class='pin'>Pin to Profile";
     child_div.appendChild(checkbox);
     parent_div.appendChild(child_div);
     Plotly.newPlot(id,data,layout);
