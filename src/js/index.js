@@ -400,7 +400,6 @@ function showTut(){
 }
 
 function removeTut(){
-    alert('exit the tutorial');
     var tut_descr_div = document.getElementById('tutorial');
     tut_descr_div.innerHTML = "";
     var body = document.getElementById('body');
@@ -415,7 +414,7 @@ function removeTut(){
 //#### modal ####//
 function rollbaclModal(clicked_id){
     if(stg_count < stg_array.indexOf(clicked_id)){
-        alert("you cannot skip this page without finish it or please cick the next button to continue");
+        alert("Please fill in the required information before continuing.");
     }else{
         $("#myModal").modal();
         $("#modal_leave").click(function(){
