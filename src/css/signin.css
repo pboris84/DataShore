@@ -11,7 +11,11 @@ html {
 
 body {
   font-family: 'Titillium Web', sans-serif;
+<<<<<<< HEAD
   background-image: url('/src/img/smoke-waves-wallpaper-1.jpg');
+=======
+  background-image: url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
+>>>>>>> master
 
 }
 
