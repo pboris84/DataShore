@@ -12,6 +12,7 @@ html {
 body {
   font-family: 'Titillium Web', sans-serif;
   background-image: url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
+  background-repeat: repeat;
 }
 
 a {
@@ -203,7 +204,7 @@ textarea {
   padding: 20px;
   opacity: 0.85;
   height: 600px;
-  background-image: url('src/img/smoke-waves-wallpaper-1.jpg');
+  background-image: url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
    background-blend-mode: screen;
   background-size: cover;
 
