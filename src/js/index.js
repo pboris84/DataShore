@@ -133,7 +133,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index+1]=data;
             });
-            varRequire.innerHTML = "<button type='button' class='mdl-chip' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip'><span class='mdl-chip__text'>Density</span></button> <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
+            varRequire.innerHTML = "<button type='button' class='mdl-chip' class='varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip' class='varButton'><span class='mdl-chip__text'>Density</span></button> <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "temperature") {
             pred_var = 'temperature';
@@ -142,7 +142,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index+1]=data;
             });
-            varRequire.innerHTML = "<button type='button' class='mdl-chip' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Density</span></button> <button type='button' class='mdl-chip'><span class='mdl-chip__text'>Salinity</span></button>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
+            varRequire.innerHTML = "<button type='button' class='mdl-chip' class='varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Density</span></button> <button type='button' class='mdl-chip' class='varButton'><span class='mdl-chip__text'>Salinity</span></button>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "density") {
             pred_var = 'density';
@@ -151,7 +151,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index+1]=data;
             });
-            varRequire.innerHTML = "<button type='button' class='mdl-chip' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip'><span class='mdl-chip__text'>Salinity</span></button>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
+            varRequire.innerHTML = "<button type='button' class='mdl-chip' class='varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip' class='varButton'><span class='mdl-chip__text'>Salinity</span></button>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         stg_count++;
     }else{
