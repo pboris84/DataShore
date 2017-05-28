@@ -1,10 +1,10 @@
 body{
     position: relative;
-    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode:darken;
-    background: -moz-linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(to right, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
     opacity:0.5,
 }
 
@@ -19,7 +19,7 @@ button {
 /* nav bar */
 #nav_header{
     opacity:0.85;
-    background-color: #283299;
+    background-color: #273D93;
 }
 
 
@@ -64,7 +64,7 @@ button {
 #add_project_btn{
     width: 40%;
     height: 50px;
-    background-color:#323B48;
+    background-color:#202021;
     color: white;
     box-shadow: 3px 3px 5px #888888;
 }
@@ -77,7 +77,7 @@ button {
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
-  background-color:  #46B6AC;
+  background-color:  #2767AE;
   background-image: url("src/img/Capstone-Orca-2.png");
   background-repeat: no-repeat;
   background-size: 200%;
@@ -142,10 +142,10 @@ button {
 .bs-wizard > .bs-wizard-step + .bs-wizard-step {}
 .bs-wizard > .bs-wizard-step .bs-wizard-stepnum {color: #595959; font-size: 16px; font-weight: bold; margin-bottom: 5px;}
 .bs-wizard > .bs-wizard-step .bs-wizard-info {color: #595959; font-size: 14px;}
-.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #E0ECF5; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
+.bs-wizard > .bs-wizard-step > .bs-wizard-dot {position: absolute; width: 30px; height: 30px; display: block; background: #273D93; top: 45px; left: 50%; margin-top: -15px; margin-left: -15px; border-radius: 50%;} 
 .bs-wizard > .bs-wizard-step > .bs-wizard-dot:after {content: ' '; width: 14px; height: 14px; background: #2767AE; border-radius: 50px; position: absolute; top: 8px; left: 8px; } 
 .bs-wizard > .bs-wizard-step > .progress {position: relative; border-radius: 0px; height: 8px; box-shadow: none; margin: 20px 0;}
-.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #E0ECF5;}
+.bs-wizard > .bs-wizard-step > .progress > .progress-bar {width:0px; box-shadow: none; background: #273D93;}
 .bs-wizard > .bs-wizard-step.complete > .progress > .progress-bar {width:100%;}
 .bs-wizard > .bs-wizard-step.active > .progress > .progress-bar {width:50%;}
 .bs-wizard > .bs-wizard-step:first-child.active > .progress > .progress-bar {width:0%;}
@@ -175,7 +175,7 @@ button {
 }
 
 #tut_btn_done{
-    background: #E0ECF5;
+    background: #FFFFFF;
     left: 47%;
 }
 
