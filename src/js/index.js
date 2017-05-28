@@ -22,7 +22,7 @@ function authenticateUser(){
         if (currUser) {
             // User is signed in.
             USER = currUser;
-            $("#nav_user_pro h4").html(USER.displayName);
+            $("#nav_user_pro h4").html("Welcom  " + USER.displayName);
             sessionStorage.USER = USER.displayName;
             init();
         } else {
