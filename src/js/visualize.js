@@ -20,7 +20,6 @@ static_content.setAttribute("style","display:none");
 //fill out nav bar project name
 $("#nav_bead_pn").html(project_name);
 $("#signout").click(function(){
-    console.log("click");
     firebase.auth().signOut().then(function() {
         window.location.href = "signin.html";
     }, function(error) {
@@ -35,7 +34,6 @@ function authenticateUser_vis(){
             USER = currUser;
             $("#nav_user_pro h4").html(USER.displayName);
             dataRef = database.ref('project/' + USER.displayName + "/" + project_name);
-            console.log(USER.displayName,project_name);
             sessionStorage.USER = USER.displayName;
             init_vis();
         } else {
@@ -50,7 +48,6 @@ function init_vis(){
         snapshot.forEach(function(child) {
             //find the file and parse it into map//
             if(child.key == 'Uploaded_File'){
-                console.log("unploaded file called");
                 output_res = child.val();
                 output_res = $.csv.toArrays(output_res);
                 output_res = output_res.slice(1);
@@ -129,7 +126,6 @@ $(".pin").change(function() {
 });
 
 function creat_profolie(myObject,headers){
-    console.log("create profolie called",myObject);
     var temp = {
                 y: myObject['pressure'],
                 x: myObject['temperature'],
@@ -240,7 +236,6 @@ function display_chart(){
     dataRef.child("/chart").once('value', function(snapshot) {
         snapshot.forEach(function(chart) {
             var chart = chart.toJSON();
-            console.log("draw graph called");
             if(chart.chart_type =="line_chart" || chart.chart_type=="scatter_plot"){
                 create_scatter_line(chart.var[0],chart.var[1],chart.chart_type);
             }else if(chart.chart_type=="box plot" || chart.chart_type=="histogram"){
@@ -264,7 +259,6 @@ function display_chart(){
         var chart_id;
         var variable=[];
         $("#modal_next").css("display","none");
-        console.log("chart_type",chart_type);
         $("#modal_next_next").css("display","inline-block");
         $('#chart_type_preview').css("display","none");
         $('#scatter_line').css("display","block");
@@ -341,7 +335,6 @@ function creatTB(res_len){
         var dataRow = output_res[index];
         if(dataRow[0]=="data"){
             nonbody_count = index + 1;
-            console.log(nonbody_count);
             startParse = true;
             index = index + 1;
             dataRow = output_res[index];
@@ -389,7 +382,6 @@ function download(){
     var csvContent = "data:text/csv;charset=utf-8,";
     var output = output_res.slice(1);
     output.forEach(function(infoArray, index){
-        console.log(infoArray);
         var dataString = infoArray.join(",");
         csvContent += index < output.length ? dataString+ "\n" : dataString;
     }); 
@@ -408,7 +400,6 @@ function download(){
 //take in para: 
 //@x:array || @y:array ||@z_ary: dict,object ||@color_ary: dict,object
 function create_heatmap(x,y,z_ary,color_ary){
-    // console.log(x,y,z_ary,color_ary);
     var parent_div=document.getElementById("chart_list");
     var map_var_count=Object.keys(z_ary).length;
     var column_length=4; //x.length;
@@ -423,7 +414,6 @@ function create_heatmap(x,y,z_ary,color_ary){
         var yValues = [1,2,3,4,5,6,7,8,9];
 
         var zValues = z
-        // console.log(xValues.length,yValues.length,zValues);
         var data = [{
                 x: xValues,
                 y: yValues,
@@ -449,11 +439,9 @@ function create_heatmap(x,y,z_ary,color_ary){
 
 //helper for heatmap
 function reorgZ_ary(array,column_length,row_length){
-    // console.log("reorgZ_ary called",row_length + " " + column_length + " " + array.length);
     var z_res=[];
     for (var i=0; i<row_length; i++) {
         z_res[i] = array.slice(i*column_length,(i+1)*column_length);
-        // console.log(i,z_res[i].length);
     }
     return z_res;
 }
@@ -479,7 +467,6 @@ function create_scatter_line(x,y,chart_type){
        hexColor = rgb2hex(y[y_keys[1]])
        id=chart_type+"_"+x_keys[0]+"_"+y_keys[0];
     }
-    // console.log(x_list,y_list);
     if(chart_type=="scatter_plot"){
         var trace1 = {
             x: x_list,
@@ -534,7 +521,6 @@ function create_scatter_line(x,y,chart_type){
 }
 
 function create_box_hist(y,chart_type){
-    // console.log(y,chart_type);
     var parent_div=document.getElementById("chart_list");
     var child_div = document.createElement("div");
     var id;
@@ -614,10 +600,8 @@ $('.sct_lin_axis_dp ul.dropdown-menu li a').click(function (e) {
     $div.removeClass('open');
     if($(this).text()=="X"){
         $pbtn.css("visibility","hidden");
-        // console.log($pbtn.css("visibility"));
     }else{
          $pbtn.css("visibility","visible");
-        //  console.log($pbtn.css("visibility"));
     }
     e.preventDefault();
     return false;
@@ -626,7 +610,6 @@ $('.sct_lin_axis_dp ul.dropdown-menu li a').click(function (e) {
 
 function rgb2hex(input){
     var input = "" + input;
-    // console.log(input.toArrays());
     var rgb = input.match(/^rgb?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
     return (rgb && rgb.length === 4) ? "#" +
     ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
