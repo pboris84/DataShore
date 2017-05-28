@@ -66,6 +66,7 @@ function init(){
 ///###  GET PROJECT LIST  ###//
 ///#####               #####//
 function get_list(){
+    $("#help").css("display","none");
     $("#creat_new_project").css("display","none");
     $("#view_project_list").css("display","block");
     var dataRef = database.ref('project/' + USER.displayName);
@@ -100,6 +101,7 @@ function get_list(){
 ///###CREATE NEW PROJECT###//
 ///#####              #####//
 function creat_project(){
+    $("#help").css("display","block");
     $("#creat_new_project").css("display","block");
     $("#view_project_list").css("display","none");
     document.getElementById('stage_content').innerHTML = create_project;
