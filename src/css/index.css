@@ -78,8 +78,8 @@ button {
 }
 .demo-card-square > .mdl-card__title {
   color: #fff;
-  background-color:  #2767AE;
   background-image: url("http://www.waves-rsp.org/img/wave.gif");
+  background-color:  #2767AE;
   background-repeat: no-repeat;
   background-size: 200%;
   background-position: right top;
