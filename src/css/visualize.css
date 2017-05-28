@@ -1,11 +1,11 @@
 /* page format */
 body{
     position: relative;
-    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode:darken;
-    background: -moz-linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(to right, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
     opacity:0.5,
 }
 
@@ -31,7 +31,7 @@ body{
 /* nav bar */
 #nav_header{
     opacity:0.85;
-    background-color: #283299;
+    background-color: #273D93;
 }
 
 
