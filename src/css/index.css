@@ -1,11 +1,7 @@
 body{
     position: relative;
-    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
-    background-repeat: no-repeat;
+    background-image:url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
     background-size: cover;
-    background-blend-mode:darken;
-    background: -moz-linear-gradient(to right, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
-    opacity:0.5,
 }
 
 h1 {
@@ -18,31 +14,14 @@ button {
 
 /* nav bar */
 #nav_header{
-    opacity:0.85;
-    background-color: #273D93;
+    background-color: black;
+    border-bottom: 2px solid white;
+    box-shadow: 0px 5px 10px #888888;
 }
 
-
-#nav_user_pro img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+#web_logo{
+    height: 85%;
 }
-
-#nav_user_pro, .mdl-layout__drawer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#drawer{
-    background-image: url("src/img/Capstone-Orca-2.png");
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-position: bottom right;  
-}
-
 
 
 
@@ -58,6 +37,10 @@ button {
     flex-wrap: wrap; 
     justify-content: space-around;
     align-items: flex-start;
+}
+
+.project_card{
+    opacity: 0.8;
 }
 
 
@@ -77,9 +60,9 @@ button {
   margin-bottom: 20px;
 }
 .demo-card-square > .mdl-card__title {
-  color: #fff;
+  color: white;
   background-image: url("http://www.waves-rsp.org/img/wave.gif");
-  background-color:  #2767AE;
+  background-color: #273D93;
   background-repeat: no-repeat;
   background-size: 200%;
   background-position: right top;

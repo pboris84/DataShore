@@ -247,7 +247,6 @@ function writeData(project_name){
         CreateDate: Date(),
         Uploaded_File: csvData,
         Output_file: null,
-        Variable: "set1",
         Chart:{},
         User:{},
         Collaboratores:{}
@@ -255,7 +254,7 @@ function writeData(project_name){
     var project_list_div = document.getElementById("project_list");
     var project_div = document.createElement("div");
     project_div.setAttribute("class","project_card demo-card-square mdl-card mdl-shadow--2dp");
-    project_div.innerHTML="<div class='mdl-card__title mdl-card--expand'><h2 class='project_tit_text mdl-card__title-text'>"+project_name+"</h2></div><div class='project_card_content mdl-card__supporting-text'>"+Date()+"</div><div class='mdl-card__actions mdl-card--border'><a class='project_link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href='visualize.html?projectname="+ project_name +"'>View Updates</a></div>"
+    project_div.innerHTML="<div class='mdl-card__title mdl-card--expand'><h2 class='project_tit_text mdl-card__title-text'>"+project_name+"</h2></div><div class='project_card_content mdl-card__supporting-text'>"+Date()+"</div><div class='mdl-card__actions mdl-card--border'><a class='project_link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect' href='visualize.html?projectname="+ project_name +"'>View Details</a></div>"
     project_list_div.appendChild(project_div);
 }
 
