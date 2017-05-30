@@ -229,7 +229,7 @@ function upload(){
                 var density;
                 for (x in data) {
                     var cellValues = data[x];
-                    if (x == 1 && cellValues == "pressure,temperature,density,salinity") {
+                    if (x == 1 && cellValues == "Pressure,Temperature,Density,Salinity") {
                         go = true;
                     }
                     for (y in cellValues) {
@@ -272,8 +272,8 @@ function upload(){
                                 
 
                                 var algo = ((parseFloat(temperature) * parseFloat(density)) / coeffs[pressure]);
-                                console.log("ALGO NULLIFICATION: " + (algo * ((multiplier + 28)/pressure)));   //NULL ALGO
-                                cellValues[y] = coeffs[pressure] ? (coeffs[pressure] + errorAdj): (coeffs[28] + (outOfBoundsAdj * multiplier) + (algo * ((multiplier + 28)/pressure)));
+                                console.log("ALGO NULLIFICATION: " + (algo * ((multiplier + 28)/pressure)));   //Temp algo null
+                                cellValues[y] = coeffs[pressure] ? (coeffs[pressure] + errorAdj): (coeffs[28] + (outOfBoundsAdj * multiplier) /*+ (algo * ((multiplier + 28)/pressure))*/ ); 
                             }
                            // parseFloat(cellValues[y])
                         }
