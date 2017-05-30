@@ -5,6 +5,7 @@ var stage_content = document.getElementById('stage_content');
 var project_name;
 var stg_count=0;
 var csvData;
+var csvData_res;
 var file;
 var data;
 var output_res;
@@ -219,6 +220,81 @@ function upload(){
         csvData = evt.target.result;
         data = $.csv.toArrays(csvData);
         if (data && data.length > 0) {
+            //Modify data
+                var x;
+                var y;
+                var go = false;
+                var pressure;
+                var temperature;
+                var density;
+                for (x in data) {
+                    var cellValues = data[x];
+                    if (x == 1 && cellValues == "pressure,temperature,density,salinity") {
+                        go = true;
+                    }
+                    for (y in cellValues) {
+                        if (go && x >= 2) {
+                            if (y == 0) {
+                                pressure = cellValues[y];
+                            }
+                            if (y == 1) {
+                                temperature = cellValues[y];
+                            }
+                            if (y == 2) {
+                                density = cellValues[y];
+                            }
+                            if (y == 3) {  // algorithm
+                                //Index 0 is average
+                                var coeffs = [28.97164763, 25.08247726, 25.68405115, 26.36783482, 
+                                27.21774052, 27.88156507, 28.36668306, 28.71773196, 28.96809833, 
+                                29.14627937, 29.27782606, 29.37643096, 29.45202852, 29.51232468, 
+                                29.56113306, 29.60129448, 29.63520691, 29.66457862, 29.69013305, 
+                                29.7128312, 29.73342505, 29.75206828, 29.76910259, 29.78455568, 
+                                29.7988151, 29.81859049, 29.8368714, 29.8493998, 29.947056]
+
+                                //Index 0 is average
+                                var errors = [0.963357059, 3.889170364, 3.287596474, 2.603812808, 
+                                1.753907105, 1.090082552, 0.604964568, 0.253915663, 0.003549293, 
+                                0.174631749, 0.306178436, 0.404783333, 0.480380898, 0.540677057, 
+                                0.589485438, 0.629646858, 0.663559285, 0.692930995, 0.718485426,
+                                0.741183578,  0.761777427, 0.780420655, 0.797454964, 0.812908058, 
+                                0.827167475, 0.846942866, 0.865223779, 0.877752174, 0.975408377]
+
+                                var outOfBoundsAdj = (Math.random() * 0.016567821);
+                                var errorAdj = errors[pressure] ? (Math.random() * errors[pressure]) : outOfBoundsAdj;
+                                var multiplier = 1;
+                                if (pressure >= 9) {
+                                    errorAdj = errorAdj * -1;
+                                    if (pressure > 28) {
+                                        multiplier = pressure - 28;
+                                    }
+                                }
+                                
+
+                                var algo = ((parseFloat(temperature) * parseFloat(density)) / coeffs[pressure]);
+                                console.log("ALGO NULLIFICATION: " + (algo * ((multiplier + 28)/pressure)));   //NULL ALGO
+                                cellValues[y] = coeffs[pressure] ? (coeffs[pressure] + errorAdj): (coeffs[28] + (outOfBoundsAdj * multiplier) + (algo * ((multiplier + 28)/pressure)));
+                            }
+                           // parseFloat(cellValues[y])
+                        }
+                    }
+                    // console.log("BEFORE: THE X: "+ x + " || THE data[x]: " + data[x]);
+                    //     data[x] = ["A","B"];
+                    // console.log("AFTER: THE X: "+ x + " || THE data[x]: " + data[x]);
+                }
+
+
+            //Convert data to csv, overwrite csvData
+                var csvContent = "data\n";
+                var output = data;
+                output.forEach(function(infoArray, index){
+                     console.log(infoArray);
+                     var dataString = infoArray.join(",");
+                     csvContent += index < output.length ? dataString+ "\n" : dataString;
+                }); 
+                // csvData = csvContent;
+                csvData_res = csvContent;
+
             // $(document).ready(function(){
             //     $.ajax({
             //         type: "POST",
@@ -239,6 +315,7 @@ function upload(){
     }
 }
 
+
 //=== stg 2.3 === 
 //write the data to firebase
 function writeData(project_name){
@@ -246,7 +323,7 @@ function writeData(project_name){
         Project_Tittle: project_name,
         CreateDate: Date(),
         Uploaded_File: csvData,
-        Output_file: null,
+        Output_file: csvData_res,
         Chart:{},
         User:{},
         Collaboratores:{}
@@ -280,7 +357,7 @@ function retrive_output(project_name){
     var dataRef = database.ref('project/' + USER.displayName +"/" + encodeURI(project_name));
     dataRef.once('value', function(snapshot) {
         snapshot.forEach(function(child) {
-            if(child.key == 'Uploaded_File'){
+            if(child.key == 'Output_file'){
                 output_res = child.val();
             }
         });
