@@ -95,7 +95,6 @@ body{
 
 .js-plotly-plot{
     display: inline-block;
-    opacity: 0.8;
     justify-content: space-around;
     color: white;
 }
@@ -123,7 +122,6 @@ body{
 }
 
  #output_dt{
-     opacity: 0.8;
      width: 80%;
      margin: auto;
  }
