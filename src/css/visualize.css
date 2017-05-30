@@ -10,7 +10,7 @@
 /* page format */
 body{
     position: relative;
-    background-image:url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
+    background-image:url('http://e-sehiyye.gov.az/images/slide/backgrounds/b27.jpg');
     background-size: cover;
     color: white;
 }
@@ -34,7 +34,7 @@ body{
 /*nav bar */
 /* nav bar */
 #nav_header{
-    background-color: black;
+    background-color: #273D93;
 }
 
 #web_logo{
@@ -92,7 +92,7 @@ body{
 
 .js-plotly-plot{
     display: inline-block;
-    opacity: 0.8;
+    justify-content: space-around;
     color: white;
 }
 
@@ -116,7 +116,6 @@ body{
 }
 
  #output_dt{
-     opacity: 0.8;
      width: 80%;
      margin: auto;
  }
