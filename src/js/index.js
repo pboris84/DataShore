@@ -126,8 +126,8 @@ function selectVar(evt){
     if(varSelect){
         var varRequire = document.getElementById("variable-require-result");
         if(varSelect.value == "salinity") {
-            pred_var = 'salinity';
-            upload_var = ['temperature', 'density'];
+            pred_var = 'Salinity';
+            upload_var = ['Pressure','Temperature', 'Density'];
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
@@ -135,8 +135,8 @@ function selectVar(evt){
             varRequire.innerHTML = "<button type='button' class='mdl-chip varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip varButton'><span class='mdl-chip__text'>Density</span></button> <div><p></br>Please download the required template and continue once your data is correctly formatted.</p></div> <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "temperature") {
-            pred_var = 'temperature';
-            upload_var = ['salinity', 'density'];
+            pred_var = 'Temperature';
+            upload_var = ['Pressure','Salinity', 'Density'];
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
@@ -144,8 +144,8 @@ function selectVar(evt){
             varRequire.innerHTML = "<button type='button' class='mdl-chip varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Density</span></button> <button type='button' class='mdl-chip varButton'><span class='mdl-chip__text'>Salinity</span></button> <div><p></br>Please download the required template and continue once your data is correctly formatted.</p></div>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "density") {
-            pred_var = 'density';
-            upload_var = ['temperature', 'salinity'];
+            pred_var = 'Density';
+            upload_var = ['Pressure','Temperature', 'Salinity'];
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
@@ -174,7 +174,7 @@ function startUpload(){
 //download tempload before upload - helper function
 function downloadTemplate(template_var){
     var csvContent = "data:text/csv;charset=utf-8,";
-    var output = [['data'],template_var];
+    var output = [['data,,,result'],template_var];
     output.forEach(function(infoArray, index){
         var dataString = infoArray.join(",");
         csvContent += index < output.length ? dataString+ "\n" : dataString;
