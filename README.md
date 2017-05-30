@@ -1,4 +1,4 @@
-![DataShore Logo](https://github.com/pboris84/DataShore/blob/master/src/img/DataShore_Logo_Slogan.png)
+![DataShore Logo](https://github.com/pboris84/DataShore/blob/master/src/img/Full_Logo_Small.png)
 # DataShore Final Documentation
 
 ## Overview of Project
@@ -16,21 +16,21 @@ index.html
 signin.html  
 temp.py  
 visualize.html  
-#### -->SRC Folder:  
+#### SRC/ Folder:  
 cities.csv.sb-8bf25a9b-9vJ3YK  
 jquery.csv.js  
 jscolor.js  
 test.ipynb  
-#### -->-->CSS Folder:  
+#### SRC/CSS/ Folder:  
 index.css  
 signin.css  
 singing.scss  
 visualize.css  
-#### -->-->DATA Folder:   
+#### SRC/DATA/ Folder:   
 cities.rtf  
 test.csv  
 transactions.csv  
-#### -->-->IMG Folder:  
+#### SRC/IMG/ Folder:  
 DataShore_Logo_BG.png  
 DataShore_Logo_Slogan.png  
 Landing Page Image 1.png  
@@ -50,7 +50,7 @@ tut_1.png
 tut_2.png  
 tut_img_2.png  
 url.html  
-#### -->-->JS Folder:  
+#### SRC/JS/ Folder:  
 common.js  
 index.js  
 signin.js  
