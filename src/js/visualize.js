@@ -47,10 +47,10 @@ function init_vis(){
     dataRef.once('value', function(snapshot) {
         snapshot.forEach(function(child) {
             //find the file and parse it into map//
-            if(child.key == 'Uploaded_File'){
+            if(child.key == 'Output_file'){
                 output_res = child.val();
                 output_res = $.csv.toArrays(output_res);
-                output_res = output_res.slice(1);
+                output_res = output_res.slice(2);
                 var lineArray = [];
                 output_res.forEach(function(infoArray, index){
                     var dataString = infoArray.join(",");
@@ -69,6 +69,7 @@ function init_vis(){
                     }
                 });
                 window.data=myObject;
+                console.log(output_res);
                 creat_profolie(myObject,headers);
                 display_chart()
                 output_res = child.val();
@@ -632,4 +633,8 @@ function model_default(){
     $("#modal_next").css("display","inline-block");
 }
 
+
+function pg_redirect(){
+    window.location.href= "index.html";
+}
 

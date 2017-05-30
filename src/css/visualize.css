@@ -1,12 +1,9 @@
 /* page format */
 body{
     position: relative;
-    background-image:url("src/img/preview_image.jpg"),linear-gradient(to top, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
-    background-repeat: no-repeat;
+    background-image:url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
     background-size: cover;
-    background-blend-mode:darken;
-    background: -moz-linear-gradient(to right, rgba(35, 153, 211, 1), rgba(255, 255, 255, 0));
-    opacity:0.5,
+    color: white;
 }
 
 
@@ -16,34 +13,23 @@ body{
 
 #page_content_nav{
     text-align: center;
+    background-color:#273D93;
+    color: white;
+    border-radius: 10px;
+    border: 5px solid white;
+    height: 100%;
+    margin-left: 20px;
+    box-shadow: 3px 3px 5px #888888;
 }
 
 /*nav bar */
 /* nav bar */
 #nav_header{
-    opacity:0.85;
-    background-color: #273D93;
+    background-color: black;
 }
 
-
-#nav_user_pro img{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-}
-
-#nav_user_pro, .mdl-layout__drawer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#drawer{
-    background-image: url("src/img/Capstone-Orca-2.png");
-    background-repeat: no-repeat;
-    background-size: 200%;
-    background-position: bottom right;  
+#web_logo{
+    height: 85%;
 }
 
 
@@ -51,6 +37,7 @@ body{
 #page_content_profile h3{
     width: 20%;
     margin: auto;
+    color: white;
 }
 
 #it_line_chart{
@@ -68,11 +55,13 @@ body{
     width: 5%;
     margin-left: 3vh;
     margin-right: 2vh;
+    color: white;
 }
 
 /* chart page */
 #page-content{
     position: relative;
+   
 }
 
 #chart_sel_modal{
@@ -99,6 +88,7 @@ body{
     display: inline-block;
     opacity: 0.8;
     justify-content: space-around;
+    color: white;
 }
 
 #chart_list{
