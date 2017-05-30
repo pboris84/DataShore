@@ -340,7 +340,7 @@ function creatTB(res_len){
                     head_row.appendChild(head_cell);
                 }else{
                     var head_cell = document.createElement('th');
-                    head_cell.innerHTML = element + "(result)";
+                    head_cell.innerHTML = element;
                     head_row.appendChild(head_cell);
                 }
             });
