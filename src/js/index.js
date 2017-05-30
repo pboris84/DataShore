@@ -131,7 +131,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
-            template_var[2]=pred_var;
+            template_var[3]=pred_var;
             varRequire.innerHTML = "<button type='button' class='mdl-chip varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip varButton'><span class='mdl-chip__text'>Density</span></button> <div><p></br>Please download the required template and continue once your data is correctly formatted.</p></div> <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "temperature") {
@@ -140,7 +140,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
-            template_var[2]=pred_var;
+            template_var[3]=pred_var;
             varRequire.innerHTML = "<button type='button' class='mdl-chip varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Density</span></button> <button type='button' class='mdl-chip varButton'><span class='mdl-chip__text'>Salinity</span></button> <div><p></br>Please download the required template and continue once your data is correctly formatted.</p></div>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         if(varSelect.value == "density") {
@@ -149,7 +149,7 @@ function selectVar(evt){
             upload_var.forEach(function(data,index){
                 template_var[index]=data;
             });
-            template_var[2]=pred_var;
+            template_var[3]=pred_var;
             varRequire.innerHTML = "<button type='button' class='mdl-chip varButton' id='csvFileUpload' accept='.csv'><span class='mdl-chip__text'>Temperature</span></button> <button type='button' class='mdl-chip varButton'><span class='mdl-chip__text'>Salinity</span></button> <div><p></br>Please download the required template and continue once your data is correctly formatted.</p></div>  <div><button type='button' class='btn btn-default stg_btn' onClick='downloadTemplate(template_var)'><span class='mdl-chip__text'>Download Template</span></button><button type='button' id='nextStep' class='btn btn-default stg_btn' onClick='startUpload()'><span class='mdl-chip__text'>Next</span></button></div>"
         }
         stg_count++;
