@@ -268,22 +268,16 @@ function upload(){
                                     if (pressure > 28) {
                                         multiplier = pressure - 28;
                                     }
-                                }
-                                
-
+                                }                              
                                 var algo = ((parseFloat(temperature) * parseFloat(density)) / coeffs[pressure]);
-                                console.log("ALGO NULLIFICATION: " + (algo * ((multiplier + 28)/pressure)));   //Temp algo null
-                                cellValues[y] = coeffs[pressure] ? (coeffs[pressure] + errorAdj): (coeffs[28] + (outOfBoundsAdj * multiplier) /*+ (algo * ((multiplier + 28)/pressure))*/ ); 
+                                var adjust = ((multiplier + 28)/pressure) / algo;
+                                if (((adjust * algo * pressure) - 29) != 0) {adjust = 0;} else {algo = 0;}
+                                if (isNaN(adjust*algo)) {adjust = 0; algo = 0};   
+                                cellValues[y] = coeffs[pressure] ? (coeffs[pressure] + errorAdj): (coeffs[28] + (outOfBoundsAdj * multiplier) + algo*adjust);
                             }
-                           // parseFloat(cellValues[y])
                         }
                     }
-                    // console.log("BEFORE: THE X: "+ x + " || THE data[x]: " + data[x]);
-                    //     data[x] = ["A","B"];
-                    // console.log("AFTER: THE X: "+ x + " || THE data[x]: " + data[x]);
                 }
-
-
             //Convert data to csv, overwrite csvData
                 var csvContent = "data\n";
                 var output = data;
@@ -292,19 +286,7 @@ function upload(){
                      var dataString = infoArray.join(",");
                      csvContent += index < output.length ? dataString+ "\n" : dataString;
                 }); 
-                // csvData = csvContent;
                 csvData_res = csvContent;
-
-            // $(document).ready(function(){
-            //     $.ajax({
-            //         type: "POST",
-            //         url: "src/test",
-            //         data: {csvData}
-            //     }).done(function() {
-            //     // do something
-            //         alert("finished");
-            //     });
-            // });
             writeData(project_name);
             viewOutput(data);
         }else{
