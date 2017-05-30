@@ -57,9 +57,13 @@ $("#signup_submit").on("click",function(){
 
 // signUpForm.addEventListener("submit", function() {
 function signup(){
-    console.log("get started",emailInput.val);
+    if(displayNameInput.value.length == 0){
+        displayNameInput.value = "Guest";
+    }
+    register();
+}
 
-
+function register(){
     firebase.auth().createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
         .then(function(user) {
             return user.updateProfile({

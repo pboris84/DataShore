@@ -109,22 +109,9 @@ function init_vis(){
     })
 }
 
-// $.each($(".pin:checkbox:checked"), function(){ 
-//         var $div = $(this).parent().parent();
-//         var $sub_div = $div.find(".js-plotly-plot");  
-//         $("#pined_chart").html($sub_div);
-//         console.log("content",$sub_div);
-// });
 
-$(".pin").change(function() {
-    console.log("click");
-    // if(this.checked) {
-    //     var $div = $(this).parent().parent();
-    //     var $sub_div = $div.find(".js-plotly-plot");  
-    //     $("#pined_chart").html($sub_div);
-    //     console.log("content",$sub_div);
-    // }
-});
+
+
 
 function creat_profolie(myObject,headers){
     var temp = {
@@ -229,7 +216,6 @@ function creat_profolie(myObject,headers){
 
 function display_chart(){
     var chart_type;
-    var pined_chart =document.getElementById("pined_chart");
     dataRef.child("/chart").once('value', function(snapshot) {
         snapshot.forEach(function(chart) {
             var chart = chart.toJSON();
@@ -511,9 +497,6 @@ function create_scatter_line(x,y,chart_type){
         child_div.setAttribute("class","line");
         child_div.setAttribute("id",id);
     }
-    var checkbox =document.createElement("div");
-    checkbox.innerHTML = "<input type='checkbox' class='pin'>Pin to Profile";
-    child_div.appendChild(checkbox);
     parent_div.appendChild(child_div);
     Plotly.newPlot(id,data,layout);
     child_div.style.border = "2px solid black";
@@ -578,9 +561,6 @@ function create_box_hist(y,chart_type){
         child_div.setAttribute("class","box");
         child_div.setAttribute("id",id);
     }
-    var checkbox =document.createElement("div");
-    checkbox.innerHTML = "<input type='checkbox' class='pin'>Pined to Profoile";
-    child_div.appendChild(checkbox);
     parent_div.appendChild(child_div);
     Plotly.newPlot(id,data,layout);
     child_div.style.border = "2px solid black";
