@@ -102,7 +102,7 @@ function init_vis(){
         static_content.setAttribute("style","display:block");
         chart_content.setAttribute("style","display:none");
         pro_content.setAttribute("style","display:none");
-        $("#nav_bead_li").html("Static");
+        $("#nav_bead_li").html("Data");
         $("#nav_static").prop("class","active");
         $("#nav_pro").prop("class","abled");
         $("#nav_chart").prop("class","abled");

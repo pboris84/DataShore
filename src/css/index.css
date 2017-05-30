@@ -1,3 +1,12 @@
+/*
+	DataShore
+	May 31, 2017
+	
+	This file contains the CSS styling for a the DataShore site. It stylizes the background, layout and color scheme
+    of the site. It keeps true to the blue themes of the company logo and stylizes the navigation bar, buttons and all 
+    other features to stay true to the relaxed ocean theme.
+*/
+
 body{
     position: relative;
     background-image:url('http://allswalls.com/images/smoke-waves-wallpaper-1.jpg');
@@ -29,6 +38,7 @@ button {
 
 /* project list */
 
+
 /*project card */
 #project_list, #add_project_btn{
     width: 100%;
@@ -43,7 +53,6 @@ button {
     opacity: 0.8;
 }
 
-
 #add_project_btn{
     width: 40%;
     height: 50px;
@@ -53,12 +62,12 @@ button {
     box-shadow: 3px 3px 5px #888888;
 }
 
-
 .demo-card-square.mdl-card {
   width: 280px;
   height: 280px;
   margin-bottom: 20px;
 }
+
 .demo-card-square > .mdl-card__title {
   color: white;
   background-image: url("http://www.waves-rsp.org/img/wave.gif");
@@ -85,8 +94,6 @@ button {
     margin-top: 20px;
     border: 1px solid darkslateblue;
 }
-
-
 
 .stg_btn{
     margin-bottom: 10px;
