@@ -259,6 +259,7 @@ function display_chart(){
         $('#chart_type_preview').css("display","none");
         $('#scatter_line').css("display","block");
         if(chart_type=="scatter_plot"||chart_type=="line_chart"){
+            $("#chart_input_descr").html("Select variables for the x and y axes and then select a color of y for the graph");
             $("#modal_next_next").click(function(){
                 var x = {};
                 var y ={};
@@ -286,6 +287,7 @@ function display_chart(){
                 create_scatter_line(x,y,chart_type);
             });
         }else if(chart_type=="box plot" || chart_type=="histogram"){
+            $("#chart_input_descr").html("Select y variable and color of y for the chart");
             $("#modal_next_next").click(function(){
                 var y ={};
                 $.each($(".var:checkbox:checked"), function(){     
