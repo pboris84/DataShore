@@ -174,7 +174,7 @@ function startUpload(){
 //download tempload before upload - helper function
 function downloadTemplate(template_var){
     var csvContent = "data:text/csv;charset=utf-8,";
-    var output = [['data,,,result'],template_var];
+    var output = [['Data,,,Result'],template_var];
     output.forEach(function(infoArray, index){
         var dataString = infoArray.join(",");
         csvContent += index < output.length ? dataString+ "\n" : dataString;
