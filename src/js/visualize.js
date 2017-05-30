@@ -243,8 +243,6 @@ function display_chart(){
         chart_type = $(this).prop("id");
     });
     $("#modal_next").click(function(){
-        var chart_id;
-        var variable=[];
         $("#modal_next").css("display","none");
         $("#modal_next_next").css("display","inline-block");
         $('#chart_type_preview').css("display","none");
@@ -252,6 +250,8 @@ function display_chart(){
         if(chart_type=="scatter_plot"||chart_type=="line_chart"){
             $("#chart_input_descr").html("Select the variables you want and choose an X or Y axis for each. For the Y variable, select the plot color.");
             $("#modal_next_next").click(function(){
+                var chart_id;
+                var variable=[];
                 var x = {};
                 var y ={};
                 $.each($(".var:checkbox:checked"), function(){     
@@ -280,6 +280,8 @@ function display_chart(){
         }else if(chart_type=="box_plot" || chart_type=="histogram"){
             $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
             $("#modal_next_next").click(function(){
+                var chart_id;
+                var variable=[];
                 var y ={};
                 $.each($(".var:checkbox:checked"), function(){     
                     var $div = $(this).parent().parent();
