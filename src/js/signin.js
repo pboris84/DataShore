@@ -58,9 +58,10 @@ $("#signup_submit").on("click",function(){
 // signUpForm.addEventListener("submit", function() {
 function signup(){
     if(displayNameInput.value.length == 0){
-        displayNameInput.value = "Guest";
+        alert("You must enter a display name to continue!");
+    }else{
+        register();
     }
-    register();
 }
 
 function register(){
