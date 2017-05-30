@@ -123,7 +123,7 @@ function creat_profolie(myObject,headers){
                 x: myObject['temperature'],
                 mode: 'markers+lines',
                 type: 'scatter',
-                name: 'temperature',
+                name: 'Temperature (Celsius)',
                 line: {shape: 'spline'},
                 marker: { size: 5,
                         color: 'rgb(93, 164, 214)'},
@@ -133,7 +133,7 @@ function creat_profolie(myObject,headers){
         x: myObject['density'],
         mode: 'markers+lines',
         type: 'scatter',
-        name: 'density',
+        name: 'Density (kg/m)',
         line: {shape: 'spline'},
         marker: { 
             size: 5,
@@ -147,7 +147,7 @@ function creat_profolie(myObject,headers){
         x: myObject['salinity'],
         mode: 'markers+lines',
         type: 'scatter',
-        name: 'salinity',
+        name: 'Salinity (psu)',
         line: {shape: 'spline'},
         marker: { 
             size: 5,
@@ -161,10 +161,10 @@ function creat_profolie(myObject,headers){
     var layout1 = {
         xaxis: {
             side: 'top',
-            title: headers.toString()},
+            title: headers.slice(1).toString()},
         yaxis: {
             autorange: 'reversed',
-            title: 'pressure'},
+            title: 'Pressure (db)'},
         height: 700,
         width:500
     };
@@ -174,28 +174,28 @@ function creat_profolie(myObject,headers){
     var temp_layout = {
         xaxis: {
             side: 'top',
-            title: "temperature"},
+            title: "Temperature (Celsius)"},
         yaxis: {
             autorange: 'reversed',
-            title: 'pressure'},
+            title: 'Pressure (db)'},
         height: 500
     };
     var density_layout = {
         xaxis: {
             side: 'top',
-            title: "density"},
+            title: "Density (kg/m)"},
         yaxis: {
             autorange: 'reversed',
-            title: 'pressure'},
+            title: 'Pressure (db)'},
         height: 500
     };
     var salinity_layout = {
         xaxis: {
             side: 'top',
-            title: "salinity"},
+            title: "Salinity (psu)"},
         yaxis: {
             autorange: 'reversed',
-            title: 'pressure'},
+            title: 'Pressure (db)'},
         height: 500
     };
     Plotly.newPlot('temp',[temp],temp_layout);
@@ -219,24 +219,24 @@ function creat_profolie(myObject,headers){
 
 
 function display_chart(){
-    var chart_type;
-    dataRef.child("/chart").once('value', function(snapshot) {
+        var chart_type;
+        dataRef.child("/chart").once('value', function(snapshot) {
         snapshot.forEach(function(chart) {
             var chart = chart.toJSON();
             if(chart.chart_type =="line_chart" || chart.chart_type=="scatter_plot"){
                 create_scatter_line(chart.var[0],chart.var[1],chart.chart_type);
-            }else if(chart.chart_type=="box plot" || chart.chart_type=="histogram"){
+            }else if(chart.chart_type=="box_plot" || chart.chart_type=="histogram"){
                 create_box_hist(chart.var[0],chart.chart_type);
             }
         });
     });
     //show the create chart modal
     $('#add_chart_btn').on('click',function(){
-       model_default();
+       model_default(chart_type);
     });
     //select chart type
     $('.list-group-item').click(function() {
-        model_default();
+        model_default(chart_type);
         $(this).addClass("active");
         $("#chart_img_src").prop("src","src/img/" +$(this).prop("id")+".png");
         $(".var").prop("checked", false);
@@ -277,7 +277,7 @@ function display_chart(){
                 $('#chart_list').css("display","block");
                 create_scatter_line(x,y,chart_type);
             });
-        }else if(chart_type=="box plot" || chart_type=="histogram"){
+        }else if(chart_type=="box_plot" || chart_type=="histogram"){
             $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
             $("#modal_next_next").click(function(){
                 var y ={};
@@ -291,6 +291,7 @@ function display_chart(){
                 });
                 variable.push(y);
                 chart_id=Object.keys(y)[0]+"_"+chart_type;
+                console.log(chart_id);
                 dataRef.child("/chart/"+chart_id).set({
                     chart_type:chart_type,
                     var:variable,
@@ -456,6 +457,24 @@ function create_scatter_line(x,y,chart_type){
        hexColor = rgb2hex(y[y_keys[1]])
        id=chart_type+"_"+x_keys[0]+"_"+y_keys[0];
     }
+    if(x_tit=="pressure"){
+        x_tit="Pressure (db)";
+    }else if(x_tit=="salinity"){
+        x_tit="Salinity (psu)";
+    }else if(x_tit=="density"){
+        x_tit="Density (kg/m)";
+    }else if(x_tit=="temperature"){
+        x_tit="Temperature (Celsius)";
+    }
+    if(y_tit=="pressure"){
+        y_tit="Pressure (db)";
+    }else if(y_tit=="salinity"){
+        y_tit="Salinity (psu)";
+    }else if(y_tit=="density"){
+        y_tit="Density (kg/m)";
+    }else if(y_tit=="temperature"){
+        y_tit="Temperature (Celsius)";
+    }
     if(chart_type=="scatter_plot"){
         var trace1 = {
             x: x_list,
@@ -468,7 +487,6 @@ function create_scatter_line(x,y,chart_type){
         };
         var data = [trace1];
         var layout = {
-            title:""+x_tit + " " +y_tit + " " + chart_type,
             xaxis: {
                 title: x_tit},
             yaxis: {
@@ -490,7 +508,6 @@ function create_scatter_line(x,y,chart_type){
         };
         var data = [trace1];
         var layout = {
-            title:""+x_tit + " " +y_tit + " " + chart_type,
             xaxis: {
                 title: x_tit},
             yaxis: {
@@ -523,7 +540,17 @@ function create_box_hist(y,chart_type){
         hexColor = rgb2hex(y[y_keys[1]]);
         id=chart_type+"_"+y_keys[0];
     }
-    if(chart_type=="box plot"){
+    var y_key = y_tit;
+    if(y_tit=="pressure"){
+        y_tit="Pressure (db)";
+    }else if(y_tit=="salinity"){
+        y_tit="Salinity (psu)";
+    }else if(y_tit=="density"){
+        y_tit="Density (kg/m)";
+    }else if(y_tit=="temperature"){
+        y_tit="Temperature (Celsius)";
+    }
+    if(chart_type=="box_plot"){
         var data = [
                     {
                         y: y_list,
@@ -531,14 +558,14 @@ function create_box_hist(y,chart_type){
                         jitter: 0.3,
                         pointpos: -1.8,
                         marker: {color: hexColor},
-                        type: 'box'
+                        type: 'box',
+                        name: y_tit,
                         
                     }
                     ];
         var layout = {
-            title: y_tit + " "+chart_type,
             yaxis: {
-                title: y_tit},
+                title: "Count"},
             height: 400,
             width:400
         };
@@ -556,9 +583,8 @@ function create_box_hist(y,chart_type){
                     }
                     ];
         var layout = {
-            title:y_tit + ""+chart_type,
             xaxis: {title: y_tit},
-            yaxis: {title: "count"},
+            yaxis: {title: "Count"},
             height: 400,
             width:400
         };
@@ -603,7 +629,8 @@ function rgb2hex(input){
 
 //make the add new chart modal to default
 //clear out all slected field
-function model_default(){
+function model_default(chart_type){
+    chart_type = " ";
     $(".sct_lin_axis_dp button").prop("var","Axis");
     $(".sct_lin_axis_dp button").html('Axis<span class="caret"></span>');
     console.log("rollback",$(".sct_lin_axis_dp button").prop("var"));
