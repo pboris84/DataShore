@@ -79,9 +79,6 @@ body{
     left: 20%;
 }
 
-.heatmap{
-    display: inline-block;
-}
 
 .scatter{
     display: inline-block;
@@ -96,17 +93,13 @@ body{
 .js-plotly-plot{
     display: inline-block;
     opacity: 0.8;
-    justify-content: space-around;
     color: white;
 }
 
 #chart_list{
     width: 90%;
     margin: auto;
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: space-around;
-    align-items: flex-start;
+    display: block;
 }
 
 #add_chart_btn{

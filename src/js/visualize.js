@@ -81,6 +81,8 @@ function init_vis(){
 
 //############## Strat of Page Swicth ##############//
     $("#nav_pro").click(function(){
+        model_default();
+        $('#chart_sel_modal').prop("style","display:none");
         pro_content.setAttribute("style","display:block");
         static_content.setAttribute("style","display:none");
         chart_content.setAttribute("style","display:none");
@@ -90,6 +92,7 @@ function init_vis(){
         $("#nav_static").prop("class","abled");
     })
     $("#nav_chart").click(function(){
+        $('#chart_sel_modal').prop("style","display:none");
         chart_content.setAttribute("style","display:block");
         pro_content.setAttribute("style","display:none");
         static_content.setAttribute("style","display:none");
@@ -99,6 +102,7 @@ function init_vis(){
         $("#nav_static").prop("class","abled");
     })
     $("#nav_static").click(function(){
+        $('#chart_sel_modal').prop("style","display:none");
         static_content.setAttribute("style","display:block");
         chart_content.setAttribute("style","display:none");
         pro_content.setAttribute("style","display:none");
@@ -299,7 +303,7 @@ function display_chart(){
         }
     });
     $(".modal_leave").click(function(){
-            $('#chart_list').css("display","block");
+        $('#chart_list').css("display","block");
         $('#chart_sel_modal').prop("style","display:none");
     })
 }
@@ -576,10 +580,11 @@ $('.sct_lin_axis_dp ul.dropdown-menu li a').click(function (e) {
     var $pbtn = $pdiv.find(".jscolor");
     var $btn = $div.find('button');
     $btn.html($(this).text() + ' <span class="caret"></span>');
+    $btn.prop("var",$(this).text());
     $div.removeClass('open');
-    if($(this).text()=="X"){
+    if($btn.prop("var")=="X"){
         $pbtn.css("visibility","hidden");
-    }else{
+    }else if($btn.prop("var") == "Y"){
          $pbtn.css("visibility","visible");
     }
     e.preventDefault();
@@ -599,6 +604,9 @@ function rgb2hex(input){
 //make the add new chart modal to default
 //clear out all slected field
 function model_default(){
+    $(".sct_lin_axis_dp button").prop("var","Axis");
+    $(".sct_lin_axis_dp button").html('Axis<span class="caret"></span>');
+    console.log("rollback",$(".sct_lin_axis_dp button").prop("var"));
     $("#chart_img_src").prop("src","");
     $('#chart_type_preview').css("display","inline-block");
     $('.chart_input').css("display","none");
