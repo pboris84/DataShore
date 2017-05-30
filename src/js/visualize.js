@@ -32,7 +32,7 @@ function authenticateUser_vis(){
         if (currUser) {
             // User is signed in.
             USER = currUser;
-            $("#nav_user_pro h4").html(USER.displayName);
+            $("#nav_user_pro h4").html("Welcome, " + USER.displayName + "!");
             dataRef = database.ref('project/' + USER.displayName + "/" + project_name);
             sessionStorage.USER = USER.displayName;
             init_vis();
@@ -119,8 +119,8 @@ function init_vis(){
 
 function creat_profolie(myObject,headers){
     var temp = {
-                y: myObject['pressure'],
-                x: myObject['temperature'],
+                y: myObject['Pressure'],
+                x: myObject['Temperature'],
                 mode: 'markers+lines',
                 type: 'scatter',
                 name: 'Temperature (Celsius)',
@@ -129,8 +129,8 @@ function creat_profolie(myObject,headers){
                         color: 'rgb(93, 164, 214)'},
             }
     var density = {
-        y: myObject['pressure'],
-        x: myObject['density'],
+        y: myObject['Pressure'],
+        x: myObject['Density'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Density (kg/m)',
@@ -143,8 +143,8 @@ function creat_profolie(myObject,headers){
     };
 
     var salinity = {
-        y: myObject['pressure'],
-        x: myObject['salinity'],
+        y: myObject['Pressure'],
+        x: myObject['Salinity'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Salinity (psu)',
@@ -219,8 +219,8 @@ function creat_profolie(myObject,headers){
 
 
 function display_chart(){
-        var chart_type;
-        dataRef.child("/chart").once('value', function(snapshot) {
+    var chart_type;
+    dataRef.child("/chart").once('value', function(snapshot) {
         snapshot.forEach(function(chart) {
             var chart = chart.toJSON();
             if(chart.chart_type =="line_chart" || chart.chart_type=="scatter_plot"){
