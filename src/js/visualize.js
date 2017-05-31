@@ -251,7 +251,7 @@ function display_chart(){
         }else if(chart_type=="box_plot" || chart_type=="histogram"){
             $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
         }
-        $("#modal_next_next").click(function(){
+        $("#modal_next_next").unbind("click").click(function(){
             if(chart_type=="scatter_plot"||chart_type=="line_chart"){
                 var chart_id;
                 var variable=[];
