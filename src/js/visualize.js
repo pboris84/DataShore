@@ -219,7 +219,7 @@ function creat_profolie(myObject,headers){
 
 
 function display_chart(){
-    var chart_type;
+    var chart_type ="line_chart";
     dataRef.child("/chart").once('value', function(snapshot) {
         snapshot.forEach(function(chart) {
             var chart = chart.toJSON();
@@ -244,6 +244,7 @@ function display_chart(){
         chart_type = $(this).prop("id");
     });
     $("#modal_next").click(function(){
+        alert(chart_type);
         $("#modal_next").css("display","none");
         $("#modal_next_next").css("display","inline-block");
         $('#chart_type_preview').css("display","none");
@@ -253,7 +254,7 @@ function display_chart(){
         }else if(chart_type=="box_plot" || chart_type=="histogram"){
             $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
         }
-        $("#modal_next_next").unbind("click").click(function(){
+        $("#modal_next_next").click(function(){
             if(chart_type=="scatter_plot"||chart_type=="line_chart"){
                 var chart_id;
                 var variable=[];
@@ -263,10 +264,10 @@ function display_chart(){
                     var $div = $(this).parent().parent();
                     var $btn = $div.find(".jscolor");
                     if($btn.css("visibility")=="hidden"){
-                        x[""+$(this).val()]=myObject[""+$(this).val()]
+                        x[""+$(this).val()]=myObject[""+$(this).val()];
                     }
                     if($btn.css("visibility")!="hidden"){
-                        y[""+$(this).val()]=myObject[""+$(this).val()]
+                        y[""+$(this).val()]=myObject[""+$(this).val()];
                         y["color"]=$btn.css("background-color");
                     }
                 });
@@ -392,63 +393,14 @@ function download(){
 
 //############## End of Page Swicth ##############//
 
-//take in para: 
-//@x:array || @y:array ||@z_ary: dict,object ||@color_ary: dict,object
-function create_heatmap(x,y,z_ary,color_ary){
-    var parent_div=document.getElementById("chart_list");
-    var map_var_count=Object.keys(z_ary).length;
-    var column_length=4; //x.length;
-    var row_length=9; //y.length;
-    for(var i=0; i <map_var_count; i++){
-        var child_div = document.createElement("div");
-        child_div.setAttribute("class","heatmap");
-        var z = reorgZ_ary(z_ary[Object.keys(z_ary)[i]],column_length,row_length);
-        //x: time
-        var xValues = [1,2,3,4];
-        //y: pressure
-        var yValues = [1,2,3,4,5,6,7,8,9];
-
-        var zValues = z
-        var data = [{
-                x: xValues,
-                y: yValues,
-                z: zValues,
-                type: 'heatmap'
-            }];
-        var layout = {
-            title: Object.keys(z_ary)[i] + " Heatmap",
-            xaxis: {
-                title: "time",
-                side: 'right'
-            },
-            yaxis: {
-                title:"pressure"
-            },
-            height: 400,
-            width: 400
-        }
-        Plotly.newPlot(child_div, data, layout);
-        parent_div.appendChild(child_div);
-    }
-}
-
-//helper for heatmap
-function reorgZ_ary(array,column_length,row_length){
-    var z_res=[];
-    for (var i=0; i<row_length; i++) {
-        z_res[i] = array.slice(i*column_length,(i+1)*column_length);
-    }
-    return z_res;
-}
-
 function create_scatter_line(x,y,chart_type){
     var parent_div= document.getElementById("chart_list");
     var child_div = document.createElement("div");
     var y_keys = Object.keys(y);
     var x_keys=Object.keys(x);
     var id;
-    var y_list = y[y_keys[0]];
-    var x_list = x[x_keys[0]];
+    var y_list = Object.values(y[y_keys[0]]);
+    var x_list =Object.values(x[x_keys[0]]);
     var y_tit = Object.keys(y)[0];
     var x_tit = Object.keys(x)[0];
     var hexColor;
@@ -462,24 +414,25 @@ function create_scatter_line(x,y,chart_type){
        hexColor = rgb2hex(y[y_keys[1]])
        id=chart_type+"_"+x_keys[0]+"_"+y_keys[0];
     }
-    if(x_tit=="pressure"){
+    if(x_tit=="Pressure"){
         x_tit="Pressure (db)";
-    }else if(x_tit=="salinity"){
+    }else if(x_tit=="Salinity"){
         x_tit="Salinity (psu)";
-    }else if(x_tit=="density"){
+    }else if(x_tit=="Density"){
         x_tit="Density (kg/m)";
-    }else if(x_tit=="temperature"){
+    }else if(x_tit=="Temperature"){
         x_tit="Temperature (Celsius)";
     }
-    if(y_tit=="pressure"){
+    if(y_tit=="Pressure"){
         y_tit="Pressure (db)";
-    }else if(y_tit=="salinity"){
+    }else if(y_tit=="Salinity"){
         y_tit="Salinity (psu)";
-    }else if(y_tit=="density"){
+    }else if(y_tit=="Density"){
         y_tit="Density (kg/m)";
-    }else if(y_tit=="temperature"){
+    }else if(y_tit=="Temperature"){
         y_tit="Temperature (Celsius)";
     }
+    console.log(Object.values(y[y_keys[0]]));
     if(chart_type=="scatter_plot"){
         var trace1 = {
             x: x_list,
@@ -533,7 +486,7 @@ function create_box_hist(y,chart_type){
     var child_div = document.createElement("div");
     var id;
     var y_keys = Object.keys(y);
-    var y_list = y[y_keys[0]];
+    var y_list = Object.values(y[y_keys[0]]);
     var y_tit = Object.keys(y)[0];
     var hexColor;
     if(y_keys[0]=="color"){
@@ -546,13 +499,14 @@ function create_box_hist(y,chart_type){
         id=chart_type+"_"+y_keys[0];
     }
     var y_key = y_tit;
-    if(y_tit=="pressure"){
+    console.log(y);
+    if(y_tit=="Pressure"){
         y_tit="Pressure (db)";
-    }else if(y_tit=="salinity"){
+    }else if(y_tit=="Salinity"){
         y_tit="Salinity (psu)";
-    }else if(y_tit=="density"){
+    }else if(y_tit=="Density"){
         y_tit="Density (kg/m)";
-    }else if(y_tit=="temperature"){
+    }else if(y_tit=="Temperature"){
         y_tit="Temperature (Celsius)";
     }
     if(chart_type=="box_plot"){
