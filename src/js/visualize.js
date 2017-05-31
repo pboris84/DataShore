@@ -597,7 +597,7 @@ function model_default(chart_type){
     $('.list-group-item').removeClass("active");
     $("#line_chart").addClass("active");
     $(".var").prop("checked", false);
-    $(".jscolor").css("visibility","visible");
+    $(".jscolor").css("visibility","hidden");
     $(".jscolor").css("background-color","white");
     $(".jscolor").html("FFFFFF");
     $('#chart_list').css("display","none");
