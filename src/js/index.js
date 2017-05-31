@@ -97,6 +97,7 @@ function get_list(){
 ///###CREATE NEW PROJECT###//
 ///#####              #####//
 function creat_project(){
+    console.log("creat project called");
     $("#help").css("display","block");
     $("#creat_new_project").css("display","block");
     $("#view_project_list").css("display","none");
