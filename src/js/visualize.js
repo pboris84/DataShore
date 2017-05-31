@@ -81,7 +81,6 @@ function init_vis(){
 
 //############## Strat of Page Swicth ##############//
     $("#nav_pro").click(function(){
-        model_default();
         $('#chart_sel_modal').prop("style","display:none");
         pro_content.setAttribute("style","display:block");
         static_content.setAttribute("style","display:none");
