@@ -67,6 +67,7 @@ function signup(){
 function register(){
     firebase.auth().createUserWithEmailAndPassword(emailInput.value, passwordInput.value)
         .then(function(user) {
+            console.log(displayNameInput.value);
             return user.updateProfile({
                 displayName: displayNameInput.value,
             });

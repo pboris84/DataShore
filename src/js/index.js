@@ -23,6 +23,7 @@ function authenticateUser(){
         if (currUser) {
             // User is signed in.
             USER = currUser;
+            console.log(USER.displayName);
             $("#nav_user_pro h4").html("Welcome,  " + USER.displayName + "!");
             sessionStorage.USER = USER.displayName;
             init();
