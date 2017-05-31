@@ -345,7 +345,7 @@ function creatTB(res_len){
                     head_row.appendChild(head_cell);
                 }else{
                     var head_cell = document.createElement('th');
-                    head_cell.innerHTML = element;
+                    head_cell.innerHTML = element +  "result";
                     head_row.appendChild(head_cell);
                 }
             });
@@ -637,10 +637,11 @@ function model_default(chart_type){
     chart_type = " ";
     $(".sct_lin_axis_dp button").prop("var","Axis");
     $(".sct_lin_axis_dp button").html('Axis<span class="caret"></span>');
-    $("#chart_img_src").prop("src","");
+    $("#chart_img_src").prop("src","src/img/line_chart.png");
     $('#chart_type_preview').css("display","inline-block");
     $('.chart_input').css("display","none");
     $('.list-group-item').removeClass("active");
+    $("#line_chart").addClass("active");
     $(".var").prop("checked", false);
     $(".jscolor").css("visibility","visible");
     $(".jscolor").css("background-color","white");
