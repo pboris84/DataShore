@@ -119,8 +119,8 @@ function init_vis(){
 
 function creat_profolie(myObject,headers){
     var temp = {
-                y: myObject['pressure'],
-                x: myObject['temperature'],
+                y: myObject['Pressure'],
+                x: myObject['Temperature'],
                 mode: 'markers+lines',
                 type: 'scatter',
                 name: 'Temperature (Celsius)',
@@ -129,8 +129,8 @@ function creat_profolie(myObject,headers){
                         color: 'rgb(93, 164, 214)'},
             }
     var density = {
-        y: myObject['pressure'],
-        x: myObject['density'],
+        y: myObject['Pressure'],
+        x: myObject['Density'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Density (kg/m)',
@@ -143,8 +143,8 @@ function creat_profolie(myObject,headers){
     };
 
     var salinity = {
-        y: myObject['pressure'],
-        x: myObject['salinity'],
+        y: myObject['Pressure'],
+        x: myObject['Salinity'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Salinity (psu)',
@@ -237,6 +237,7 @@ function display_chart(){
     //select chart type
     $('.list-group-item').click(function() {
         model_default(chart_type);
+        $('.list-group-item').removeClass("active");
         $(this).addClass("active");
         $("#chart_img_src").prop("src","src/img/" +$(this).prop("id")+".png");
         $(".var").prop("checked", false);
@@ -345,7 +346,7 @@ function creatTB(res_len){
                     head_row.appendChild(head_cell);
                 }else{
                     var head_cell = document.createElement('th');
-                    head_cell.innerHTML = element +  "result";
+                    head_cell.innerHTML = element;
                     head_row.appendChild(head_cell);
                 }
             });
