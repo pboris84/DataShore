@@ -69,7 +69,7 @@ function init_vis(){
                     }
                 });
                 window.data=myObject;
-                console.log(output_res);
+                console.log(myObject);
                 creat_profolie(myObject,headers);
                 display_chart()
                 output_res = child.val();
@@ -119,8 +119,8 @@ function init_vis(){
 
 function creat_profolie(myObject,headers){
     var temp = {
-                y: myObject['Pressure'],
-                x: myObject['Temperature'],
+                y: myObject['pressure'],
+                x: myObject['temperature'],
                 mode: 'markers+lines',
                 type: 'scatter',
                 name: 'Temperature (Celsius)',
@@ -129,8 +129,8 @@ function creat_profolie(myObject,headers){
                         color: 'rgb(93, 164, 214)'},
             }
     var density = {
-        y: myObject['Pressure'],
-        x: myObject['Density'],
+        y: myObject['pressure'],
+        x: myObject['density'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Density (kg/m)',
@@ -143,8 +143,8 @@ function creat_profolie(myObject,headers){
     };
 
     var salinity = {
-        y: myObject['Pressure'],
-        x: myObject['Salinity'],
+        y: myObject['pressure'],
+        x: myObject['salinity'],
         mode: 'markers+lines',
         type: 'scatter',
         name: 'Salinity (psu)',
@@ -249,7 +249,11 @@ function display_chart(){
         $('#scatter_line').css("display","block");
         if(chart_type=="scatter_plot"||chart_type=="line_chart"){
             $("#chart_input_descr").html("Select the variables you want and choose an X or Y axis for each. For the Y variable, select the plot color.");
-            $("#modal_next_next").click(function(){
+        }else if(chart_type=="box_plot" || chart_type=="histogram"){
+            $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
+        }
+        $("#modal_next_next").unbind("click").click(function(){
+            if(chart_type=="scatter_plot"||chart_type=="line_chart"){
                 var chart_id;
                 var variable=[];
                 var x = {};
@@ -265,25 +269,24 @@ function display_chart(){
                         y["color"]=$btn.css("background-color");
                     }
                 });
+                console.log(x,y)
                 chart_id=Object.keys(x)[0]+"_"+Object.keys(y)[0]+"_"+chart_type;
                 variable.push(x);
                 variable.push(y);
+                // alert(chart_id);
                 dataRef.child("/chart/"+chart_id).set({
                     chart_type:chart_type,
                     var:variable,
-                    pin:false,
                 });
                 $(".var").prop("checked", false);
                 $('#chart_list').css("display","block");
+                $('#chart_sel_modal').prop("style","display:none");
                 create_scatter_line(x,y,chart_type);
-            });
-        }else if(chart_type=="box_plot" || chart_type=="histogram"){
-            $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
-            $("#modal_next_next").click(function(){
+            }else if(chart_type=="box_plot" || chart_type=="histogram"){
                 var chart_id;
                 var variable=[];
                 var y ={};
-                $.each($(".var:checkbox:checked"), function(){     
+                $.each($(".var:checkbox:checked"), function(){   
                     var $div = $(this).parent().parent();
                     var $btn = $div.find(".jscolor");
                     if($btn.css("visibility")!="hidden"){
@@ -293,17 +296,16 @@ function display_chart(){
                 });
                 variable.push(y);
                 chart_id=Object.keys(y)[0]+"_"+chart_type;
-                console.log(chart_id);
                 dataRef.child("/chart/"+chart_id).set({
                     chart_type:chart_type,
                     var:variable,
-                    pin:false,
                 });
                 $(".var").prop("checked", false);
                 $('#chart_list').css("display","block");
+                $('#chart_sel_modal').prop("style","display:none");
                 create_box_hist(y,chart_type);
-            });
-        }
+            }
+        });
     });
     $(".modal_leave").click(function(){
         $('#chart_list').css("display","block");
@@ -635,7 +637,6 @@ function model_default(chart_type){
     chart_type = " ";
     $(".sct_lin_axis_dp button").prop("var","Axis");
     $(".sct_lin_axis_dp button").html('Axis<span class="caret"></span>');
-    console.log("rollback",$(".sct_lin_axis_dp button").prop("var"));
     $("#chart_img_src").prop("src","");
     $('#chart_type_preview').css("display","inline-block");
     $('.chart_input').css("display","none");
