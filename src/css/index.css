@@ -88,7 +88,7 @@ button {
 
 #variable-require, #create_project, #variable-select, #upload_data, #output_dt{
     margin-top: 20px;
-    border: 1px solid darkslateblue;
+    border: 1px solid #273D93;
 }
 
 .stg_btn{
@@ -97,7 +97,7 @@ button {
 }
 
 #variable-require .panel-heading, #create_project .panel-heading, #variable-select .panel-heading, #upload_data .panel-heading, #output_dt .panel-heading{
-    background-color: darkslateblue;
+    background-color: #273D93;
     border:none;
     border-radius: 0px;
     color: white;
