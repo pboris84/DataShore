@@ -69,7 +69,6 @@ function init_vis(){
                     }
                 });
                 window.data=myObject;
-                console.log(myObject);
                 creat_profolie(myObject,headers);
                 display_chart()
                 output_res = child.val();
@@ -243,7 +242,6 @@ function display_chart(){
         chart_type = $(this).prop("id");
     });
     $("#modal_next").click(function(){
-        alert(chart_type);
         $("#modal_next").css("display","none");
         $("#modal_next_next").css("display","inline-block");
         $('#chart_type_preview').css("display","none");
@@ -270,11 +268,9 @@ function display_chart(){
                         y["color"]=$btn.css("background-color");
                     }
                 });
-                console.log(x,y)
                 chart_id=Object.keys(x)[0]+"_"+Object.keys(y)[0]+"_"+chart_type;
                 variable.push(x);
                 variable.push(y);
-                // alert(chart_id);
                 dataRef.child("/chart/"+chart_id).set({
                     chart_type:chart_type,
                     var:variable,
@@ -431,7 +427,6 @@ function create_scatter_line(x,y,chart_type){
     }else if(y_tit=="Temperature"){
         y_tit="Temperature (Celsius)";
     }
-    console.log(Object.values(y[y_keys[0]]));
     if(chart_type=="scatter_plot"){
         var trace1 = {
             x: x_list,
@@ -498,7 +493,6 @@ function create_box_hist(y,chart_type){
         id=chart_type+"_"+y_keys[0];
     }
     var y_key = y_tit;
-    console.log(y);
     if(y_tit=="Pressure"){
         y_tit="Pressure (db)";
     }else if(y_tit=="Salinity"){
@@ -598,8 +592,9 @@ function model_default(chart_type){
     $("#line_chart").addClass("active");
     $(".var").prop("checked", false);
     $(".jscolor").css("visibility","hidden");
-    $(".jscolor").css("background-color","white");
-    $(".jscolor").html("FFFFFF");
+    $(".jscolor").css("background-color","black");
+    $(".jscolor").css("color","white");
+    $(".jscolor").html("pick a color");
     $('#chart_list').css("display","none");
     $('#chart_sel_modal').css("display","block");
     $("#modal_next_next").css("display","none");
