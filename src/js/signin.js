@@ -1,3 +1,12 @@
+/*
+        DataShore
+        May 31, 2017
+        
+        This file contain the JavaScript for the sign-in page. It works to display the correct image on the landing page
+	based on which section was clicked. It also permits users to either log in or sign up and enter their informaiton
+	and successfully access the site.
+*/
+
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
   
   var $this = $(this),
