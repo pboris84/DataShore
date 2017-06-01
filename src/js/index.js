@@ -1,3 +1,13 @@
+/*
+        DataShore
+        May 31, 2017
+        
+        This file contain the JavaScript that is used from when a user creates a project until they create visuals.
+        This permits users to select the variables they want to predict and then displays the variables they must have
+        data for to do this. It downloads a CSV template for users to fill in and also allows users to upload their data.
+        This also calls the algorithm so users can view and export the predicted data.
+*/
+
 "use strict";
 // init variables
 var USER = ""; // the current user
