@@ -3,7 +3,7 @@
   May 31, 2017
   This file contains the JavaScript for the sign up and sign in process for the user. It stores
   the information entered into the fields to a database. In addition, it infroms the user of any
-  errors or rquirements they have not met for the fields.
+  errors or requirements they have not met for the fields.
 */
 
 $('.form').find('input, textarea').on('keyup blur focus', function (e) {
