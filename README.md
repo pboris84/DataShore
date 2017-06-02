@@ -58,11 +58,11 @@ tutorial.js
 visualize.js  
 
 ## Summary of the Major Technology Decisions You Made
-Using non relational database instead of relational database
-Landing page where we mention the who, what, and how
-Having a overview of the user flow on the website
-Having the dashboard be the home page
-Why you chose the stack you did
+Using non relational database instead of relational database because the data was not being collected for authentication purposes.
+On the landing page we mention the who, what, and how for the user scenario because some users may not know about oceanography.
+There is an overview of the user flow on the project page to inform the user about steps for predicting data.
+The dashboard is the home page because it's more convenient for the user and the original home was not adding any additional value.
+Why you chose the stack you did:
 
 ## Contact Information
 #### For questions or concerns regarding existing code, please contact:  
