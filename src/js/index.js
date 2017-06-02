@@ -2,9 +2,11 @@
         DataShore
         May 31, 2017
         
-        This file contain the JavaScript that is used from when a user creates a project until they create visuals.
-        This permits users to select the variables they want to predict and then displays the variables they must have
-        data for to do this. It downloads a CSV template for users to fill in and also allows users to upload their data.
+        This file contain the JavaScript that is used from when a user creates a project, visuals, and computes the 
+        predicted column
+
+        This permits users to select the variables they want to predict and then displays the variables they are 
+        required to upload. It downloads a CSV template for users to fill in and also allows users to upload their data.
         This also calls the algorithm so users can view and export the predicted data.
 */
 
@@ -236,7 +238,8 @@ function upload(){
         csvData = evt.target.result;
         data = $.csv.toArrays(csvData);
         if (data && data.length > 0) {
-            //Modify data
+            // Before the file is uploaded to firebase, the predicted column is computed and appended
+            // From here on out the user has access to a file that contains their predicted column. 
                 var x;
                 var y;
                 var go = false;
