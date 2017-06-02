@@ -1,3 +1,13 @@
+/*
+        DataShore
+        May 31, 2017
+        
+        This file contain the JavaScript for the visualization page. This authenticates the user and loads plots
+        they have previously created for that dataset. This page loads the profiles for the data, as well as the
+        static data. It also allows the user to create charts: either a line chart, scatter plot, histogram or box
+        plot as well as choose the varibales for these and the color. The charts are mad eusing the plotly library. 
+*/
+
 "use strict";
 
 //############## Initialize ##############//
@@ -110,10 +120,6 @@ function init_vis(){
         $("#nav_chart").prop("class","abled");
     })
 }
-
-
-
-
 
 function creat_profolie(myObject,headers){
     var temp = {
@@ -251,7 +257,7 @@ function display_chart(){
         }else if(chart_type=="box_plot" || chart_type=="histogram"){
             $("#chart_input_descr").html("Select a variable and select the Y axis for its display and then choose a color for this chart.");
         }
-        $("#modal_next_next").click(function(){
+        $("#modal_next_next").unbind("click").click(function(){
             if(chart_type=="scatter_plot"||chart_type=="line_chart"){
                 var chart_id;
                 var variable=[];

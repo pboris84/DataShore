@@ -29,7 +29,14 @@ visualize.css
 #### SRC/DATA/ Folder:   
 cities.rtf  
 test.csv  
-transactions.csv  
+transactions.csv 
+#### SRC/Components/ Folder:  
+DataUpload.html  
+Visuals.html   
+app.jsx    
+index.jsx    
+#### SRC/.ipynb_checkpoints/ Folder: 
+test-checkpoint.ipynb    
 #### SRC/IMG/ Folder:  
 DataShore_Logo_BG.png  
 DataShore_Logo_Slogan.png  

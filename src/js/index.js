@@ -1,3 +1,13 @@
+/*
+        DataShore
+        May 31, 2017
+        
+        This file contain the JavaScript that is used from when a user creates a project until they create visuals.
+        This permits users to select the variables they want to predict and then displays the variables they must have
+        data for to do this. It downloads a CSV template for users to fill in and also allows users to upload their data.
+        This also calls the algorithm so users can view and export the predicted data.
+*/
+
 "use strict";
 // init variables
 var USER = ""; // the current user
@@ -36,7 +46,11 @@ function authenticateUser(){
 
 //##############Different Process Stage###########//
 var create_project = "<div class='home panel' id='create_project'><div class='panel-heading'><h2 class='panel-title'>Create Project</h2></div><div class='panel-body'>Choose a name for your project:<div class='input-group project_name'><span class='input-group-addon' id='sizing-addon2'>Name</span><input type='text' class='form-control' placeholder='Project Name' aria-describedby='sizing-addon2' id='project_name'></div><button type='button' class='btn btn-default stg_btn' onClick=creatPro()>Create</button></div></div>";
+<<<<<<< HEAD
 var select_var = '<div class="home panel" id="variable-select"><div class="panel-heading"><h2 class="panel-title">Select Variable</h2></div><div class="panel-body">Choose a varibale to predict:</div><div><select id="varSelect" class="dropdown" onchange="selectVar(event)"><option value="">---</option><option value="salinity">Salinity (psu)</option><option value="temperature">Temperature (Celsius)</option><option value="density">Density (kg/m)</option><option value="other">Other</option></select></div></div> <div class="home panel" id="variable-require"><div class="panel-heading"><h2 class="panel-title">Prepare to Upload your Data</h2></div><div class="panel-body">The required variables needed to predict <span id="select_var_to_pred"> </span></div><div><p id="variable-require-result"></p></div></div>';
+=======
+var select_var = '<div class="home panel" id="variable-select"><div class="panel-heading"><h2 class="panel-title">Select Variable</h2></div><div class="panel-body">Choose a variable to predict:</div><div><select id="varSelect" class="dropdown" onchange="selectVar(event)"><option value="">---</option><option value="salinity">Salinity (psu)</option><option value="temperature">Temperature (Celsius)</option><option value="density">Density (kg/m)</option><option value="other">Other</option></select></div></div> <div class="home panel" id="variable-require"><div class="panel-heading"><h2 class="panel-title">Prepare to Upload your Data</h2></div><div class="panel-body">The required variables needed to predict <span id="select_var_to_pred"> </span></div><div><p id="variable-require-result"></p></div></div>';
+>>>>>>> gh-pages
 var upload_data = "<div class='home panel' id='upload_data'><div class='panel-heading'><h2 class='panel-title'>Upload Data</h2></div><div class='panel-body'>Choose a file to upload:<input type='file' name='File Upload' id='txtFileUpload' onChange='browse(event)' accept='.csv'/><button type='button' class='btn btn-default stg_btn' onClick='upload()'>Upload</button></div></div>";
 var output_dt="<div class='home panel' id='output_dt'><div class='panel-heading'><h2 class='panel-title'>View Output</h2></div><div class='panel-body'><div id=table_div'><table class='table table-striped' id='output_table'></table></div><div class='btn-toolbar'><button type='button' class='btn btn-default stg_btn' onClick=download()>Download Output and Exit</button><button type='button' class='btn btn-default stg_btn' onClick=pg_redirect()>Continue to Dashboard</button></div></div></div>"
 

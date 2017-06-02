@@ -1,5 +1,12 @@
+/*
+        DataShore
+        May 31, 2017
+        
+        This file contain the JavaScript that is shared among our pages. It runs the iput file and stores links to 
+        our database and authentication information. This allows us to access our database.
+*/
+
 "use strict"
-console.log("common.js called");
 var config = {
 apiKey: "AIzaSyANfwhjv-oRcJhVp6sQfArTorgh4jsZFJw",
 authDomain: "datashore-7057d.firebaseapp.com",
