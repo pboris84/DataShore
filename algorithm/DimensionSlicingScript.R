@@ -1,4 +1,5 @@
-
+## DataShore
+## May 31, 2017
 ## This is a tool build to reduce the dimensionality of our dataset from 3D down to a series of 2D
 
 setwd("C:/Users/iGuest/Capstone Data Testing")
