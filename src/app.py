@@ -1,3 +1,5 @@
+## A mockup of Login functionality
+
 from flask import Flask, render_template, redirect, url_for,request
 from flask import make_response
 app = Flask(__name__)
