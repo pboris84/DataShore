@@ -7,14 +7,10 @@ DataShore allows users to understand, explore and predict environmental data. It
 ## List of Contents
 #### For more information, please visit individual file for documentation.
 #### Main Folder:  
-app.py  
 .DS_Store  
-DimensionSlicingScript.R  
-README.md  
-Scripts.R  
+README.md   
 index.html  
 signin.html  
-temp.py  
 visualize.html  
 #### SRC/ Folder:  
 cities.csv.sb-8bf25a9b-9vJ3YK  
@@ -27,14 +23,7 @@ signin.css
 singing.scss  
 visualize.css  
 #### SRC/DATA/ Folder:   
-cities.rtf  
-test.csv  
-transactions.csv 
-#### SRC/Components/ Folder:  
-DataUpload.html  
-Visuals.html   
-app.jsx    
-index.jsx    
+test.csv     
 #### SRC/.ipynb_checkpoints/ Folder: 
 test-checkpoint.ipynb    
 #### SRC/IMG/ Folder:  
@@ -61,7 +50,6 @@ url.html
 common.js  
 index.js  
 signin.js  
-tutorial.js  
 visualize.js  
 
 ## Summary of the Major Technology Decisions You Made
